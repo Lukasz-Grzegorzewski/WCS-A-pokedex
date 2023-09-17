@@ -33,14 +33,13 @@ function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
   let pokemon = pokemonList[pokemonIndex];
 
-  const handleClick = (type) => {
-    if(type === "increment" ) setPokemonIndex((prev) => prev + 1)
-    else setPokemonIndex((prev) => prev - 1)
+  const handleClick = (pokemonName) => {
+    setPokemonIndex(pokemonList.findIndex(pokemon => pokemon.name === pokemonName))
   };
 
   return (
     <div className="app">
-      <Navbar pokemonIndex={pokemonIndex} pokemonListLength={pokemonList.length} handleClick={handleClick}/>
+      <Navbar pokemonList={pokemonList} handleClick={handleClick}/>
       <PokemonCard pokemon={pokemon} />
     </div>
   );
